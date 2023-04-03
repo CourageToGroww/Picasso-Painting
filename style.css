@@ -2,8 +2,19 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     background-color: lightblue;
     height: calc(100vh - 16px);
+}
+
+.form-submitted{
+    background-image: url('https://uploads-ssl.webflow.com/5ef0df6b9272f7410180a013/60c0e28575cd7c21701806fd_q1cunpuhbdreMPFRSFLyfUXNzpqv_I5fz_plwv6gV3sMNXwUSPrq88pC2iJijEV7wERnKXtdTA0eE4HvdnntGo9AHAWn-IcMPKV-rZw1v75vlTEoLF4OdNqsRb7C6r7Mvzrm7fe4.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
 }
 
 .canvas{
@@ -26,13 +37,17 @@ body{
     width: 60px;
     border-radius: 40px;
     margin: 20px 0px 0px 25px;
+    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.4);
 }
+
+
 
 .building-container{
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content:flex-end;
+    margin-left: 20px;
 }
 
 .tallest-building{
@@ -43,6 +58,19 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
+
+
+.window:nth-child(2n + 1),
+.window2:nth-child(3n + 1),
+.window3:nth-child(4n + 1) {
+  animation: lightOn 15s infinite;
+}
+
+.window:nth-child(3n),
+.window2:nth-child(4n),
+.window3:nth-child(2n) {
+  animation: lightOn 9s infinite;
 }
 
 
@@ -93,38 +121,117 @@ body{
     width: 540px;
     border-radius: 0 0 16px 16px;
 }
+.buynowsec {
+    width: 70%;
+    margin-top: 30px;
+    text-align: center;
+    font-family: 'Dosis', sans-serif;
+}
 
-@media screen and (max-width: 320px){
-    .canvas{
-        width: 250px;
-        height: 200px;
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.message {
+    border-color: initial;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 5px;
+}
+
+@keyframes lightOn {
+    0%, 100% {
+        background-color: lightblue;
+    }
+    50% {
+        background-color: rgba(240, 199, 19, 0.822);
+    }
+}
+
+
+/* Mobile (480 x 320) */
+@media screen and (max-width: 480px) {
+    .canvas {
+        width: 80%;
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
 
-    .moon{
-        height: 40px;
-        width: 40px;
+    .moon-container {
+        width: 100%;
     }
 
-    .grass{
-        width: 250px;
+    .moon {
+        height: 25px;
+        width: 25px;
+        margin: 5px;
+    }
+
+    .building-container{
+        margin-left: 50px;
+    }
+
+
+    .tallest-building,
+    .shortest-building,
+    .medium-building {
+        width: 30%;
+    }
+
+    .tallest-building {
+        height: 70px;
+    }
+
+    .shortest-building {
+        height: 30px;
+    }
+
+    .medium-building {
         height: 50px;
     }
+
+    .window, .window3 {
+        height: 15px;
+        width: 20px;
+    }
+
+    .window2 {
+        height: 10px;
+        width: 20px;
+    }
+
+    .grass {
+        width: 100%;
+        height: 30%;
+        margin-bottom: 30px;
+    }
 }
 
-@media screen and (max-width: 375px) {
 
-}
+/* Tablet(1024 x 768) */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .canvas {
+        width: 600px;
+        height: 400px;
+    }
 
-@media screen and (max-width: 425px)  {
+    .building-container{
+        margin-left: 20px;
+    }
 
-}
+    .medium-building{
+        height: 18vh;
+    }
+    
+    .grass{
+        width: 600px;
+        height: 100vh;
+    }
 
-@media screen and (max-width: 768px) {
-
-  }
-
-@media screen and (max-width: 1024px) {
-
+    .buynowsec {
+        width: 80%;
+    }
 }
 
 /* Desktop (1680 x 1050) */
@@ -134,10 +241,9 @@ body{
         height: 500px;
     }
     .building-container{
-        margin-top: 8vh;
-        margin-left: 10vw;
+        margin: 8vh 0vh 0vh 10vw;
     }
-    
+
     .moon{
         width: 85px;
         height: 85px;
@@ -154,78 +260,8 @@ body{
     .grass{
         width: 800px;
     }
-}
 
-/* iPad (1024 x 768) */
-@media screen and (min-width: 769px) and (max-width: 1024px) {
-    .canvas {
-        width: 600px;
-        height: 400px;
-    }
-    
-
-    .medium-building{
-        height: 18vh;
-    }
-
-    .grass{
-        width: 600px;
-        height: 100vh;
-    }
-
-
-}
-
-/* Mobile (480 x 320) */
-@media screen and (min-width: 320px) and (max-width: 480px) {
-    .canvas {
-        width: 300px;
-        height: 200px;
-    }
-
-    .moon{
-        height: 30px;
-        width: 30px;
-        margin: 10px 0px 0px 10px;
-    }
-    .building-container{
-        display: flex;
-        flex-direction: row;
-        justify-content:flex-end;
-        margin-left: auto;
-        min-width: 100px;
-        width: 80%;
-        height: 100px;
-        margin-top: 20px;
-    }
-
-    .tallest-building{
-        width: 100px;
-        height: 100px;
-    }
-
-    .shortest-building{
-        width: 100px;
-        height: 40px;
-    }
-
-    .medium-building{
-        width: 100px;
-        height: 70px;
-    }
-
-    .window, .window3 {
-        height: 20px;
-        width: 25px;
-    }
-
-.window2{
-    height: 15px;
-    width: 25px;
-}
-    
-
-    .grass{
-        width: 300px;
+    .buynowsec {
+        width: 60%;
     }
 }
